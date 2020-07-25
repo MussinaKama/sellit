@@ -14,16 +14,12 @@ import ListingsScreen from "./app/screens/ListingsScreen";
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
-
-const categories = [
-  {label: "Electronics", value: 1},
-  {label: "Furniture", value: 2},
-  {label: "Clothing", value: 3},
-]
+import RegisterScreen from './app/screens/RegisterScreen';
+import ListingEditScreen from './app/screens/ListingEditScreen';
 
 export default function App() {
   return (
-    <LoginScreen/>
+    <ListingEditScreen/>
   
   )
 }

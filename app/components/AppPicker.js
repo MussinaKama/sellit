@@ -16,6 +16,7 @@ import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import AppTextInput from "./AppTextInput";
 import PickerItem from "../components/PickerItem";
+import App from "../../App";
 
 export default function AppPicker({
   icon,
@@ -38,7 +39,7 @@ export default function AppPicker({
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+          {selectedItem ? (<AppText style={styles.text}>{selectedItem.label}</AppText>) : (<AppText style={styles.placeholder}>{placeholder}</AppText>)}
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -50,7 +51,7 @@ export default function AppPicker({
         <Button title="Close" onPress={() => setModalVisible(false)} />
         <FlatList
           data={items}
-          keyExtractor={(item) => item.value.toString()}
+          keyExtractor={(item) => {item.value, item.id}}
           renderItem={({ item }) => (
             <PickerItem label={item.label} onPress={() => {setModalVisible(false); onSelectItem(item);}} />
           )}
@@ -73,6 +74,12 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   text: {
+    color: colors.grey,
+    fontSize: 18,
     flex: 1,
   },
+  placeholder: {
+    color: colors.grey,
+    flex: 1
+  }
 });
